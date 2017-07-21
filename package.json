@@ -1,0 +1,24 @@
+{
+  "name": "dht11-driver",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "dht11-driver": "bin/dht11-driver.js"
+  },
+  "scripts": {
+    "build": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@lonord.name:/home/git/dht11-driver.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.11.0",
+    "ffi": "^2.2.0"
+  }
+}
