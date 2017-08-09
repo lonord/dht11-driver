@@ -58,8 +58,6 @@ int dht11_read_val(int *temp, int *hum){
 int readValue(int *temp, int *hum)
 {
 	int attempts=ATTEMPTS;
-	if(wiringPiSetup()==-1)
-		return 0;
 	while(attempts){                        //you have 5 times to retry
 		int success = dht11_read_val(temp, hum);     //get result including printing out
 		if (success) {                      //if get result, quit program; if not, retry 5 times then quit
@@ -68,12 +66,24 @@ int readValue(int *temp, int *hum)
 		attempts--;
 		delay(500);
 	}
-	return 1;
+	return 0;
+}
+
+int setup() {
+	if (wiringPiSetup() == -1) {
+		return 1;
+	}
+	else {
+		return 0;
+	}
 }
 
 int main(void){
 	int temp, hum;
-	if (readValue(&temp, &hum) == 0)
+	if (setup() == 1) {
+		return 1;
+	}
+	if (readValue(&temp, &hum) == 1)
 	{
 		return 1;
 	}
